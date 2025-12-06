@@ -1,12 +1,17 @@
 workflows:
   android-workflow:
-    name: Android Build
+    name: Android Build (Auto Locate)
     max_build_duration: 60
     environment:
       flutter: stable
     scripts:
-      - cd provider_counter
-      - flutter pub get
-      - flutter build apk
+      - name: Locate project and build
+        script: |
+          echo "Searching for pubspec.yaml ..."
+          APP_DIR=$(dirname "$(find . -name pubspec.yaml | head -n 1)")
+          echo "Project found at: $APP_DIR"
+          cd "$APP_DIR"
+          flutter pub get
+          flutter build apk
     artifacts:
-      - provider_counter/build/app/outputs/flutter-apk/app-release.apk
+      - "**/build/app/outputs/flutter-apk/app-release.apk"
