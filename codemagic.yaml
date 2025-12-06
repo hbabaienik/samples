@@ -10,4 +10,4 @@ workflows:
       - flutter build apk
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
-working_directory: samples/provider_counter
+working_directory: provider_counter
