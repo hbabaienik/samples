@@ -4,10 +4,9 @@ workflows:
     max_build_duration: 60
     environment:
       flutter: stable
-    working_directory: samples/provider_counter
     scripts:
+      - cd provider_counter
       - flutter pub get
       - flutter build apk
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
-working_directory: provider_counter
+      - provider_counter/build/app/outputs/flutter-apk/app-release.apk
